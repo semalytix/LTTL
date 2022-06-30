@@ -19,14 +19,11 @@ def ave_vecs(sentence, model):
     return sent / sent_length
 
 
-# def words(sentence, model):
-#     """
-#     Returns a list of tokens using the nltk word_tokenizer. This is mainly
-#     for the General_Dataset class.
-#
-#     """
-#     # TODO still needed?
-#     return word_tokenize(sentence)
+def words(sentence, model):
+    """
+    Returns a list of tokens using the nltk word_tokenizer.
+    """
+    return word_tokenize(sentence)
 
 
 

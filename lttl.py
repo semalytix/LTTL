@@ -1,5 +1,5 @@
+import argparse
 import datetime
-import json
 import re
 import sys
 import yaml
@@ -288,9 +288,9 @@ class BLSE(nn.Module):
         """
 
         proj_loss = self.projection_loss(proj_x, proj_y)
-        logger.info(proj_loss)
+        #logger.info("projection loss :"+proj_loss)
         class_loss = self.classification_loss(class_x, class_y, src=True)
-        logger.info(class_loss)
+        #logger.info("classification loss :"+class_loss)
         return alpha * proj_loss + (1 - alpha) * class_loss
 
     def shuffle_dataset(self, X, y):
@@ -334,7 +334,7 @@ class BLSE(nn.Module):
                 loss = self.full_loss(proj_X, proj_Y, cx, cy, alpha)
                 loss.backward()
                 self.optim.step()
-                logger.info(loss.item())
+                #logger.info(loss.item())
 
                 # check cosine distance between dev translation pairs
                 xdev = self.pdataset._Xdev
@@ -349,31 +349,31 @@ class BLSE(nn.Module):
 
                 # macro f1
                 dev_f1 = macro_f1(ydev, xp)
-                logger.info("Source Dataset F1 " + str(dev_f1))
+                #logger.info("Source Dataset F1 " + str(dev_f1))
 
                 # precision
                 dev_prec = precision_score(ydev, xp, average="macro")
-                logger.info("Source Dataset Precision " + str(dev_prec))
+                #logger.info("Source Dataset Precision " + str(dev_prec))
 
                 # recall
                 dev_rec = recall_score(ydev, xp, average="macro")
-                logger.info("Source Dataset Recall " + str(dev_rec))
+                #logger.info("Source Dataset Recall " + str(dev_rec))
 
                 # accuracy
                 dev_acc = accuracy_score(ydev, xp)
-                logger.info("Source Dataset Accuracy " + str(dev_acc))
+                #logger.info("Source Dataset Accuracy " + str(dev_acc))
 
                 # confusion matrix
                 src_cm = confusion_matrix(ydev, xp)
                 tn, fp, fn, tp = src_cm.ravel()
-                logger.info(src_cm)
+                #logger.info(src_cm)
                 sum_examples = (tn + fp + fn + tp)
-                logger.info(f"True positives: {tp}, True negatives: {tn}, False positives: {fp}, False negatives: {fn}")
-                logger.info(f"There were {sum_examples} documents")
+                #logger.info(f"True positives: {tp}, True negatives: {tn}, False positives: {fp}, False negatives: {fn}")
+                #logger.info(f"There were {sum_examples} documents")
 
             for j in range(num_batches):
                 dev_f1 = macro_f1(ydev, xp)
-                logger.info(f"source dev_f1 {dev_f1} (dev translation pairs)")
+                #logger.info(f"source dev_f1 {dev_f1} (dev translation pairs)")
 
             if self.trg_data:
                 # check target dev f1
@@ -383,27 +383,27 @@ class BLSE(nn.Module):
 
                 # macro f1
                 cross_f1 = macro_f1(crossy, xp)
-                logger.info("Target Dataset F1 " + str(cross_f1))
+                #logger.info("Target Dataset F1 " + str(cross_f1))
 
                 # precision
                 cross_prec = precision_score(crossy, xp, average="macro")
-                logger.info("Target Dataset Precision " + str(cross_prec))
+                #logger.info("Target Dataset Precision " + str(cross_prec))
 
                 # recall
                 cross_rec = recall_score(crossy, xp, average="macro")
-                logger.info("Target Dataset Recall " + str(cross_rec))
+                #logger.info("Target Dataset Recall " + str(cross_rec))
 
                 # accuracy
                 cross_acc = accuracy_score(crossy, xp)
-                logger.info("Target Dataset Accuracy" + str(cross_acc))
+                #logger.info("Target Dataset Accuracy" + str(cross_acc))
 
                 trg_cm = confusion_matrix(crossy, xp)
                 tn, fp, fn, tp = trg_cm.ravel()
-                logger.info(trg_cm)
+                #logger.info(trg_cm)
                 sum_examples = (tn + fp + fn + tp)
-                logger.info(f"True positives: {tp}, True negatives: {tn}, False positives: {fp}, False negatives: {fn}")
-                logger.info(f"There were {sum_examples} documents")
-                logger.info(f"Epoch: {num_epochs}")
+                #logger.info(f"True positives: {tp}, True negatives: {tn}, False positives: {fp}, False negatives: {fn}")
+                #logger.info(f"There were {sum_examples} documents")
+                #logger.info(f"Epoch: {num_epochs}")
 
                 run_time_now = datetime.datetime.now()
                 if cross_f1 > best_cross_f1:
@@ -422,16 +422,7 @@ class BLSE(nn.Module):
                                                                                                        cross_f1))
                     self.dump_weights(weight_file)
 
-                #TODO still needed?
-
                 # saves the metrics into a history
-                # sys.stdout.write('\r epoch {0} loss: {1:.3f}  trans: {2:.3f}  src_f1: {3:.3f}  trg_f1: {4:.3f} '
-                #                  'src_prec: {8:.3f} src_rec:{9:.3f} src_acc:{10:.3f} trg_prec:{11:.3f} trg_rec:{12:.3f} trg_acc:{13:.3f}'
-                #                  ' src_syn: {5:.3f}  src_ant: {6:.3f}  cross_syn: {7:.3f}  cross_ant: {8:.3f}'.format(
-                #     i, loss.data.item(), score.data.item(), dev_f1,
-                #     cross_f1, syn_cos.data.item(), ant_cos.data.item(),
-                #     cross_syn_cos.data.item(), cross_ant_cos.data.item(), dev_prec,dev_rec,dev_acc,cross_prec,cross_rec,cross_acc))
-
                 sys.stdout.flush()
                 self.history['loss'].append(loss.data.item())
                 self.history['dev_cosine'].append(score.data.item())
@@ -528,7 +519,7 @@ class BLSE(nn.Module):
         the predictions are written to outfile.
         """
 
-        print("Precictions are being written to: "+outfile)
+        logger.info("Precictions are being written to: "+outfile)
 
         pred = self.predict(X, src=src).data.numpy().argmax(1)
 
@@ -544,7 +535,7 @@ class BLSE(nn.Module):
     # Takes results from history variable
     def evaluation_results(self):
         h = self.history
-        print(h.keys())
+        #print(h.keys())
         source_f1 = h['dev_f1'][-1]  # Returns the last f1 from the development set in the source language
         target_f1 = h['cross_f1'][-1]  # Returns the last f1 from the dev set in the target language
         source_prec = h['dev_prec'][-1]
@@ -648,7 +639,7 @@ def get_best_run(weightdir):
     best_params = []
     best_f1 = 0.0
     best_weights = ''
-    print("Your directory for the weights is: "+weightdir)
+    logger.info("Your directory for the weights is: "+weightdir)
     tempfilelist = os.listdir(weightdir)
     if ".DS_Store" in tempfilelist:
         tempfilelist.remove(".DS_Store")
@@ -659,7 +650,6 @@ def get_best_run(weightdir):
             alpha = float(re.findall('0.[0-9]+', file.split('-')[-2])[0])
             f1 = float(re.findall('0.[0-9]+', file.split('-')[-1])[0])
             if f1 > best_f1:
-                print("conditional reached")
                 best_params = [epochs, batch_size, alpha]
                 best_f1 = f1
                 weights = os.path.join(weightdir, file)
@@ -674,7 +664,7 @@ def get_last_run(weightdir):
     tempfilelist = os.listdir(weightdir)
     greatest = 0
     last_run_file_name = ""
-    print("Your directory for the weights is: " + weightdir)
+    logger.info("Your directory for the weights is: " + weightdir)
     if ".DS_Store" in tempfilelist:
         tempfilelist.remove(".DS_Store")
     for file in tempfilelist:
@@ -692,7 +682,8 @@ def read_config(config_path):
 
 def set_parameters(task_config, task):
     argus = task_config.keys()
-    print("These are your specified arguments: "+argus)
+    logger.info("These are your specified arguments: ")
+    print(argus)
 
     if 'concept' not in argus:
         logger.warning("No concept specified, please choose a concept!")
@@ -738,7 +729,7 @@ def set_parameters(task_config, task):
 
     if 'proj_loss' not in argus:
         task_config['proj_loss'] = 'mse'  # default value
-        logger.info("Projection less set to default ({})".format(task_config['proj_loss']))
+        logger.info("Projection loss set to default ({})".format(task_config['proj_loss']))
 
     if 'batch_size' not in argus:
         task_config['batch_size'] = 50  # default value
@@ -848,7 +839,7 @@ def lttl(task_config, task):
     predsdir = set_task_config['preds_dir']
 
     # import datasets (representation will depend on final classifier)
-    print('importing datasets')
+    logger.info('importing datasets')
 
     dataset = CorpusDataset(os.path.join('datasets', set_task_config['source_dataset']),
                             None,
@@ -864,14 +855,14 @@ def lttl(task_config, task):
                                   train_set=False)
 
     # Import monolingual vectors
-    print('importing word embeddings')
+    logger.info('importing word embeddings')
     src_vecs = WordVecs(set_task_config['source_embeddings'])
     logger.info(f" The source vecs length is {src_vecs.vector_size}")
     trg_vecs = WordVecs(set_task_config['target_embeddings'])
     logger.info(f" The target vecs length is {trg_vecs.vector_size}")
 
     # Import translation pairs
-    print('importing translation pairs')
+    logger.info('importing translation pairs')
     pdataset = ProjectionDataset(set_task_config['lexicon'], src_vecs, trg_vecs)
 
     if num_cat == "binary":
@@ -904,7 +895,7 @@ def lttl(task_config, task):
     best_f1, best_params, best_weights = get_best_run(savedir)
     try:
         blse.load_weights(best_weights)
-        print(best_weights)
+        #print(best_weights)
         print('Dev set')
         print('best dev f1: {0:.3f}'.format(best_f1))
         print('parameters: epochs {0} batch size {1} alpha {2}'.format(*best_params))
@@ -944,7 +935,7 @@ def lttl(task_config, task):
         meta = json_meta_information()
         json.dump(meta, result_file, indent=2)
 
-    print(json_meta_information())
+    #print(json_meta_information())
 
 
 def combi(task_config, task):
@@ -957,7 +948,7 @@ def combi(task_config, task):
     predsdir = set_task_config['preds_dir']
 
     # import datasets (representation will depend on final classifier)
-    print('importing datasets')
+    logger.info('importing datasets')
 
     cross_dataset = CorpusDataset(os.path.join('datasets', set_task_config['target_dataset']),
                                   None,
@@ -967,7 +958,7 @@ def combi(task_config, task):
                                   train_set=False, combination=True)
 
     # Import monolingual vectors
-    print('importing word embeddings')
+    logger.info('importing word embeddings')
     src_vecs = WordVecs(set_task_config['source_embeddings'])
     logger.info(f" The source vecs length is {src_vecs.vector_size}")
     trg_vecs = WordVecs(set_task_config['target_embeddings'])
@@ -990,7 +981,7 @@ def combi(task_config, task):
     best_f1, best_params, best_weights = get_best_run(savedir)
     try:
         blse.load_weights(best_weights)
-        print(best_weights)
+        #print(best_weights)
     except RuntimeError:
         logger.info("Get best_run was unsucessful. "
                     "The embeddings used in the experiment have different dimensions from the ones saved in models.")

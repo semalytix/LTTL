@@ -1,0 +1,40 @@
+tasks:
+  - LTTL: # obligatory
+          # choose task type from LTTL, BL+LTTL or LTTL+BL
+      concept: # obligatory
+               # avoid spaces in name
+               # concept name that will be used to automatically created folders for results, runs, etc (unless the names are specified in the config)
+      source_language: # default: en
+                       # use language code, such as en
+      target_language: # default: fr
+                       # use language code, such as es, fr, zh
+      source_dataset: # obligatory
+                      # path to source datset inside the ./datasets/ folder
+      target_dataset: # obligatory
+                      # path to target datset inside the ./datasets/ folder
+      source_embeddings: # obligatory
+                         # path to source embeddings
+      target_embeddings: # obligatory
+                         # path to target embeddings
+      lexicon: # obligatory
+               # path to lexicon
+      epochs: # default: 200
+              # nr of epochs
+      number_cat: # default: binary
+                  # nr of categories for classification, eg binary
+      alpha: # default: .001
+             # alpha value for training
+      proj_loss: # default: mse
+                 # projection loss such as mse
+      batch_size: # default: 50
+                  # nr of documents per batch
+      results_dir: # named automatically if not specified
+                   # path to folder to save results
+      runs_dir: # named automatically if not specified
+                # path to folder to save runs
+      models_dir: # for BL+LTTL and LTTL+BL obligatory
+                  # path to folder to take pretrained models from
+                  # for LTTL named automatically if not specified
+                  # path to folder to save models after training
+      preds_dir: # named automatically if not specified
+                 # path to folder to save predictions in

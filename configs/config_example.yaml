@@ -1,0 +1,36 @@
+# example configurations for LTTL (including different model tasks)
+# for more detailed explanations on the fields, see config_template.yaml
+tasks:
+  - LTTL:
+      concept: DailyActivities
+      #source_language: en
+      #target_language: fr
+      source_dataset: dailyactivities_source_data_en.json
+      target_dataset: dailyactivities_target_data_fr.json
+      source_embeddings: biomed
+      target_embeddings: frwiki
+      lexicon: lexicons/apertium/en_fr.txt
+      epochs: 2
+  - BL+LTTL:
+      concept: DailyActivities
+      source_language: en
+      #target_language: fr
+      source_dataset: dailyactivities_source_data_en.json
+      target_dataset: dailyactivities_target_data_fr_BL.json
+      source_embeddings: google
+      target_embeddings: frwiki
+      models_dir: models/apertium_en_fr_DailyActivities
+      lexicon: lexicons/apertium/en_fr.txt
+  - LTTL+BL:
+      concept: DailyActivities
+      source_language: en
+      target_language: fr
+      source_dataset: dailyactivities_source_data_en.json
+      target_dataset: dailyactivities_target_data_fr.json
+      source_embeddings: google
+      target_embeddings: frwiki
+      lexicon: lexicons/apertium/en_fr.txt
+      models_dir: models/apertium_en_fr_DailyActivities
+
+
+

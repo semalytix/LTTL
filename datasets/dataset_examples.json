@@ -1,0 +1,50 @@
+{
+ "meta_information": {
+  "task": "concept-transfer",
+  "language": "English",
+  "concept": "DailyActivities",
+  "number_positive_samples": 2,
+  "number_of_negative_samples": 2,
+  "time_stamp": "2022-06-30T14:38:20"
+ },
+ "positive_class": [
+  {
+   "doc_id": 173021331,
+   "text": "So happy..managed to do one hour of housework today!",
+   "label": "Daily activities",
+   "span": [
+    0,
+    52
+   ]
+  },
+  {
+   "doc_id": 173030281,
+   "text": "I have no energy left to clean the house :-(",
+   "label": "Daily activities",
+   "span": [
+    100,
+    144
+   ]
+  }
+ ],
+ "negative_class": [
+  {
+   "doc_id": 173032333,
+   "text": "Cc, just one question, because we had a French woman but she lived in Switzerland so she is on the Swiss health system and not the French one. Concerning you, are you under the French social security system or the possibility to have also the Swiss one? To have followed this French/Swiss woman, the protocols were identical to that of France, except that for certain products that are taken care of in France she had to have the acceptance of the Swiss organism to be taken care of. So my question is simply financial, if you have studied this problem if there is one? For chemo, not everyone reacts in the same way to identical protocols, you have for example Or and Strella who reacted differently on the same first part, OrOr being really sick, whereas Strella was better tolerated. The only thing that is for everyone is the one fatigue (medical) that accumulates with the sessions, so either it's spaced every 3 weeks but sometimes 15 days, then it's even more shaking. So we will say that on average you are \"sick\" at least 3 to 4 days after the session, so you need help for your twins. If you can bear it well you will still need to rest, so the ideal is to have an au pair, if your family can't take care of the twins. There are patient groups in many centres, either for psychological support, sports, beauty activities, etc. It is different from one centre to another. In France we have the league against the one cancer that offers psychological support, manicures, sophrology, sports activities, you just have to contact them to see what they offer. Not knowing which system you will be in, French or Swiss, I don't know how it works. In France we have the Ald which is set up by the attending physician who assures you 100% for the care relevant to the pathology. For the league in France, I don't know if you have to prove that you are treated in France or not to benefit from what they have? Kisses",
+   "label": "No daily activities",
+   "span": [
+    1479,
+    1509
+   ]
+  },
+  {
+   "doc_id": 173030363,
+   "text": "Pretty good news, right? For scintigraphy; it's the injection that can \"pose a problem\", but it's very fast. Don't tense up, possibly cough at the time of the injection, and accept that you go very slowly. Otherwise, it's like an ordinary radio: you take not glamourous poses; you mustn't move, you'll be de_NAME_ 2mm, and there's no need to smile. The tumor; the biopsy (cell sampling); doesn't hurt. We are asleep! When we wake up, we are under general anaesthesia (general anaesthesia?). Where you can be a little bit cozy is when the anesthetic is no longer effective, but you will have a prescription to counteract it. Examinations, operations; it's mostly in the head that it's played out. We don't do Koh Lanta, we're not \"celebrities\", but we happily burn the Ninja Warriors! (I have time to watch TV right now). These are our \"trials\", and it's our big moment to show how we \"rock hard\". Not the funniest moment of a lifetime; but (especially in retrospect), completely manageable. Mental preparation; a little common sense.... Common sense: plan that when you come back, it's not spring cleaning, or the whole family's tour. You plan your shopping, clothes that are easy to put on (the shirt that attaches in front = no arms to lift), possibly you've done your pharmaceutical shopping (bandages, antiseptic solution, \"plaster\"). And you agree not to run a marathon the next day. Waiting for the results...the most \"painful\" (I think of something else, but I remain polite ). Especially since the longest part is the journey of the play, and the report; the analysis is quick. And above all, we don't panic, because it's useless, and with a bit of good will, I'm sure you'll find something to furnish this dead time. Scared? Of crossing the street; that the elevator will unhook; of having an accident, that we'll be given contaminated meat?????? Shall we go through the list? You can't live by \"it can happen\"; that's not what life is all about. You have to know how to enjoy it. A little hard to admit at first, but I'm sure when you think back in a few years... Mission of the day (and to be done every day): find a mini kiff = a little something to enjoy yourself, and not be afraid of ridicule.",
+   "label": "No daily activities",
+   "span": [
+    800,
+    808
+   ]
+  }
+ ]
+}

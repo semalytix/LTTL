@@ -15,20 +15,19 @@ from sklearn.metrics import f1_score, accuracy_score, precision_score, recall_sc
 
 run_time = datetime.datetime.now()
 
-class BLSE(nn.Module):
+class LTTL(nn.Module):
     """
-    Bilingual Sentiment Embeddings
+    Language and task informed transfer learning framework based on Bilingual Sentiment Embeddings
 
     Parameters:
 
         src_vecs: WordVecs instance with the embeddings from the source language
         trg_vecs: WordVecs instance with the embeddings from the target language
-        pdataset: Projection_Dataset from source to target language
-        cdataset: Source sentiment dataset
+        pdataset: Projection_Dataset from source to target language (lexicon)
+        cdataset: Source dataset
         projection_loss: the distance metric to use for the projection loss
                          can be either mse (default) or cosine
         output_dim: the number of class labels to predict (default: 4)
-
     """
 
     def __init__(self, src_vecs, trg_vecs, trg_dataset=None,
@@ -37,7 +36,7 @@ class BLSE(nn.Module):
                  output_dim=4,
                  summary_writter_params=None
                  ):
-        super(BLSE, self).__init__()
+        super(LTTL, self).__init__()
 
         if cdataset:
 
@@ -876,7 +875,7 @@ def lttl(task_config, task):
         b = '4cls'
 
     # Create a BLSE object
-    blse = BLSE(src_vecs, trg_vecs, pdataset=pdataset, cdataset=dataset, trg_dataset=cross_dataset,
+    blse = LTTL(src_vecs, trg_vecs, pdataset=pdataset, cdataset=dataset, trg_dataset=cross_dataset,
                 projection_loss=set_task_config['proj_loss'],
                 output_dim=output_dim,
                 summary_writter_params=runsdir
@@ -975,7 +974,7 @@ def combi(task_config, task):
         b = '4cls'
 
     # Create a BLSE object
-    blse = BLSE(src_vecs, trg_vecs, cross_dataset, output_dim=output_dim)
+    blse = LTTL(src_vecs, trg_vecs, cross_dataset, output_dim=output_dim)
 
     # Get best run
     best_f1, best_params, best_weights = get_best_run(savedir)

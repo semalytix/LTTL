@@ -38,6 +38,4 @@ python3 lttl.py -cf [path_to_config]
 License
 -------
 
-Copyright (C) 2018, Jeremy Barnes
-
-Licensed under the terms of the Creative Commons CC-BY public license
+Licensed under the terms of the [**Creative Commons CC-BY-NC public license**](https://creativecommons.org/licenses/)

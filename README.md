@@ -11,14 +11,12 @@ Katharina Allgaier, Susana Veríssimo, SherryTan, Matthias Orlikowski, & Matthia
 
 Jorge Gracia, Christian Fäth, Matthias Hartung, Max Ionov, Julia Bosque-Gil, Susana Veríssimo, Christian Chiarcos, & Matthias Orlikowski (2020): [**LLeveraging Linguistic Linked Data for Cross-Lingual Model Transfer in the Pharmaceutical Domain**](https://doi.org/10.1007/978-3-030-62466-8_31). The Semantic Web – ISWC 2020 19th International Semantic Web Conference, Part II, 499–514.
 
-and
-
 Matthias Hartung, Matthias Orlikowski, Susana Veríssimo (2020): [**Evaluating the impact of bilingual lexical resources on cross-lingual sentiment projection in the pharmaceutical domain**](https://doi.org/10.5281/zenodo.3707940). Technical Report. 
 
 Requirements
 --------
 
-The systems has been tested for python 3.6 and the requirements are set accordingly.
+The system has been tested for python 3.6 and the requirements are set accordingly.
 
 
 Usage

@@ -1,0 +1,10 @@
+*.pyc
+.DS_Store
+embeddings/*
+models*/*
+predictions*/
+datasets/*
+runs*/*
+preds*/*
+lexicons/*
+

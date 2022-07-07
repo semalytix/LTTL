@@ -39,6 +39,11 @@ python3 lttl.py -cf [path_to_config]
 ``` 
 
 
+**Lexicon processing**
+
+The folder lexicon_processing provides scripts to convert individual or open source (such as Apertium) lexicons into the format required for LTTL. They include:
+* ...
+* ...
 
 
 License

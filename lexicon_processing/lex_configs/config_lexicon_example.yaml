@@ -1,0 +1,65 @@
+# Simple lexicon with basic processing
+- lexicon:
+    type: simple
+    processing: basic
+    save_file: simple_apertium_lexicon.txt
+    baseline_lex: lexicons/apertium/en-es.txt
+
+# Lexicon with disambiguation processing
+- lexicon:
+    type: simple
+    processing: disambiguated
+    save_file: disambiguated_lexicon.txt
+    baseline_lex: lexicons/apertium/en-es.txt
+    disambiguation_corpus: ./res/dummy_spanish_dataset.txt
+
+# Lexicon extension with additional lexicon (filtering processing)
+- lexicon:
+    type: extension
+    processing: filtered
+    save_file: extended_filtered_lexicon_bingliu.txt
+    baseline_lex: lexicons/apertium/en-es.txt
+    additional_lex:
+      - lexicons/bingliu/en-es.txt
+    disambiguation_corpus: ./res/dummy_spanish_dataset.txt
+
+# Lexicon extension with two lexica (basic processing)
+- lexicon:
+    type: extension
+    processing: basic
+    save_file: extended_lexicon_bingliu_handcrafted.txt
+    baseline_lex: lexicons/apertium/en-es.txt
+    additional_lex:
+      - lexicons/bingliu/en-es.txt
+      - lexicons/en-es-handmade-sentiment-lexicon-expanded.txt
+
+# lexicon induction with one pivot only (basic processing)
+- lexicon:
+    type: induction
+    processing: basic
+    save_file: inducted_lexicon_en-fr.txt
+    source_lang: en
+    target_lang: fr
+    pivot_langs:
+      - pivot_lang: es
+        lex_with_src: lexicons/apertium/en-es.txt
+        lex_with_trg: lexicons/apertium/es-fr.txt
+
+# lexicon induction with multiple pivots (disambiguation processing)
+- lexicon:
+    type: induction
+    processing: disambiguated
+    save_file: inducted_lexicon_en-fr_disambiguated.txt
+    disambiguation_corpus: ./res/dummy_spanish_dataset.txt
+    source_lang: en
+    target_lang: fr
+    pivot_langs:
+      - pivot_lang: es
+        lex_with_src: lexicons/apertium/en-es.txt
+        lex_with_trg: lexicons/apertium/es-fr.txt
+      - pivot_lang: ca
+        lex_with_src: lexicons/apertium/en-ca.txt
+        lex_with_trg: lexicons/apertium/ca-fr.txt
+      - pivot_lang: eo
+        lex_with_src: lexicons/apertium/en-eo.txt
+        lex_with_trg: lexicons/apertium/eo-fr.txt

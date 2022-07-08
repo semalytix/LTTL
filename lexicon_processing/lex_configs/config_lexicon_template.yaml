@@ -1,0 +1,67 @@
+# Simple lexicon with basic processing
+- lexicon:
+    type: simple
+    processing: basic
+    save_file: # path for saving simple lexicon
+    baseline_lex: # baseline lexicon to be processed into a new lexicon
+
+# Lexicon with disambiguation processing
+- lexicon:
+    type: simple
+    processing: disambiguated
+    save_file: # path for saving simple lexicon
+    baseline_lex: # baseline lexicon to be processed into a new lexicon
+    disambiguation_corpus: # path for disambiguation corpus in the target language
+
+# Lexicon extension with additional lexicon (filtering processing)
+- lexicon:
+    type: extension
+    processing: filtered
+    save_file: # path for saving extended lexicon
+    baseline_lex: # path for baseline lexicon (any)
+    additional_lex:
+      - # path for 1st additional lexicon
+    disambiguation_corpus: # path for disambiguation corpus in the target language
+
+# Lexicon extension with two lexica (basic processing)
+- lexicon:
+    type: extension
+    processing: basic
+    save_file: # path for saving extended lexicon
+    baseline_lex: # path for baseline lexicon (any)
+    additional_lex:
+      - # path for 1st additional lexicon
+      - # path for 2nd additional lexicon
+      - # path for nth additional lexicon
+
+
+# lexicon induction with one pivot only (basic processing)
+- lexicon:
+    type: induction
+    processing: basic
+    save_file: # path for saving inducted lexicon
+    source_lang: # e.g. en
+    target_lang: # e.g. fr
+    pivot_langs:
+      - pivot_lang: # e.g. es
+        lex_with_src: # path for lexicon with the format source_lang -> pivot_lang
+        lex_with_trg: # path for the lexicon with the format pivot_lang -> target_lang
+
+# lexicon induction with multiple pivots (disambiguation processing)
+- lexicon:
+    type: induction
+    processing: disambiguated
+    save_file: # path for saving inducted lexicon
+    disambiguation_corpus: # path for disambiguation corpus in the target language
+    source_lang: #e.g. en
+    target_lang: #e.g. fr
+    pivot_langs:
+      - pivot_lang: # e.g. es
+        lex_with_src: # path for lexicon with the format source_lang -> pivot_lang
+        lex_with_trg: # path for the lexicon with the format pivot_lang -> target_lang
+      - pivot_lang: # e.g. ca
+        lex_with_src: # path for lexicon with the format source_lang -> pivot_lang
+        lex_with_trg: # path for the lexicon with the format pivot_lang -> target_lang
+      - pivot_lang: # e.g. eo
+        lex_with_src: # path for lexicon with the format source_lang -> pivot_lang
+        lex_with_trg: # path for the lexicon with the format pivot_lang -> target_lang

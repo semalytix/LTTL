@@ -35,7 +35,7 @@ reformat_tsv_txt(){
 # Joins multi-word expressions in the txt lexicon to form single words so that the lexicon can be used in the LTTL framework
 join_mwe(){
 
-    # All files are saved under the folder glossaries (in data) and the files end in medglossaries.txt
+    # All files are saved under the folder glossaries and the files end in medglossaries.txt
     filenames=$(ls medical_txt_lexica/*medglossaries.txt)
     for eachfile in $filenames;
 

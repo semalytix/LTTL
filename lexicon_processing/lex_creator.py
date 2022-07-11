@@ -1,5 +1,5 @@
 import sys
-from Utils.lex_utils import *
+from utils.lex_utils import *
 import yaml
 
 

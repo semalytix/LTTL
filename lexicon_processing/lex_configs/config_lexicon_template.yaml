@@ -8,7 +8,7 @@
 # Lexicon with disambiguation processing
 - lexicon:
     type: simple
-    processing: disambiguated
+    processing: disambiguation
     save_file: # path for saving simple lexicon
     baseline_lex: # baseline lexicon to be processed into a new lexicon
     disambiguation_corpus: # path for disambiguation corpus in the target language
@@ -16,7 +16,7 @@
 # Lexicon extension with additional lexicon (filtering processing)
 - lexicon:
     type: extension
-    processing: filtered
+    processing: filtering
     save_file: # path for saving extended lexicon
     baseline_lex: # path for baseline lexicon (any)
     additional_lex:
@@ -50,7 +50,7 @@
 # lexicon induction with multiple pivots (disambiguation processing)
 - lexicon:
     type: induction
-    processing: disambiguated
+    processing: disambiguation
     save_file: # path for saving inducted lexicon
     disambiguation_corpus: # path for disambiguation corpus in the target language
     source_lang: #e.g. en

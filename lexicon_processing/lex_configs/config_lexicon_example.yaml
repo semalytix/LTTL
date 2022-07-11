@@ -8,7 +8,7 @@
 # Lexicon with disambiguation processing
 - lexicon:
     type: simple
-    processing: disambiguated
+    processing: disambiguation
     save_file: disambiguated_lexicon.txt
     baseline_lex: lexicons/apertium/en-es.txt
     disambiguation_corpus: ./res/dummy_spanish_dataset.txt
@@ -16,7 +16,7 @@
 # Lexicon extension with additional lexicon (filtering processing)
 - lexicon:
     type: extension
-    processing: filtered
+    processing: filtering
     save_file: extended_filtered_lexicon_bingliu.txt
     baseline_lex: lexicons/apertium/en-es.txt
     additional_lex:
@@ -48,7 +48,7 @@
 # lexicon induction with multiple pivots (disambiguation processing)
 - lexicon:
     type: induction
-    processing: disambiguated
+    processing: disambiguation
     save_file: inducted_lexicon_en-fr_disambiguated.txt
     disambiguation_corpus: ./res/dummy_spanish_dataset.txt
     source_lang: en

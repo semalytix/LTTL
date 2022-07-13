@@ -267,7 +267,7 @@ class FilteredLexicon(BasicLexicon):
 
     The purpose of this class is to create a lexicon with disambiguated translations only.
 
-    This class inherits the methods from BasicLexicon. The basic_processing parameter is as set to True as default.
+    This class inherits the methods from BasicLexicon. The basic_processing parameter is set to True as default.
     ----------
     Attributes
         read_path: path from txt or tsv file of the lexicon of interest
@@ -392,7 +392,7 @@ class ExtensionLexicon:
 
         Any lexicon can be used as a baseline lexicon. The baseline lexicon is read in first and then the additional lexicon.
         If for a source language word there is a new translation from the additional lexicon, the translation will be
-        inserted in the list of translations for that word. If the word does not exist in the baseline lexicon, the entry
+        inserted in the list of translations for that word. If the source word does not exist in the baseline lexicon, the entry
         will be added to the lexicon.
         :param baseline_lexicon: a lexicon object
         :param additional_lexicon: a lexicon object
@@ -458,7 +458,7 @@ class InductionLexicon:
     translation in the target language, where there is a common pivot word.
 
     This class uses methods from BasicLexicon, DisambiguatedLexicon and FilteredLexicon depending on the processing chosen
-    for the lexica involved. In all cases, basic_processing is set to True
+    for the lexica involved. In all cases, basic_processing is set to True.
     ----------
     Attributes
         source_lang: source language of interest (e.g. en)

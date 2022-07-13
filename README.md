@@ -36,7 +36,7 @@ pip install -r requirements.txt
 
 As input the LTTL system needs:
 * An annotated source and target language data set for a 2/3/4 category classification task (in .json format - see examples in datasets/)
-* Embeddings for the source and target language (see examples in embeddings/)
+* Embeddings for the source and target languages
 * A lexicon that maps the vocabulary of the source language to the target language (see examples in lexicons/)
 * A configuration file that specifies the components above as well as (optionally) several hyper parameters and the choice of task (LTTL alone or in combination with another system (BL)) (in .yaml format - see detailed description and examples in configs/)
 

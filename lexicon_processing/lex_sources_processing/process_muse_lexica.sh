@@ -19,7 +19,7 @@ for file in $lexica;
    do
   	echo $file
   	lexname=$(basename "$file"|cut -f 1 -d ".")
-    lexname+="_processed.txt"
+   lexname+="_processed.txt"
   	echo $lexname
   	awk '{print $1 "\t" $2}' $file|sed 's/ //g'|sort|uniq > ${lexname} ;
   	mv ${lexname} ./all_languages
